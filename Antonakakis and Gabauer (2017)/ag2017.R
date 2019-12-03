@@ -204,7 +204,7 @@ date = as.Date(as.character(DATA[,1]))
 Y = DATA[,-1]
 k = ncol(Y)
 
-# TVP-VAR
+### TVP-VAR
 nlag = 4 # VAR(4)
 nfore = 10 # 10-step ahead forecast
 m = nlag*(k^2)
