@@ -252,18 +252,12 @@ for (i in 1:k) {
   }
 }
 
-pci = matrix(NA,ncol=1,nrow=t)
-PCI = NULL
+PCI = array(NA,c(k,k,t))
 for (i in 1:k) {
   for (j in 1:k) {
-    if (j>i) {
-      cv = CV[c(i,j), c(i,j),]
-      for (ik in 1:t) {
-        pci[ik,] = 2*(sum(cv[,,ik]) - sum(diag(cv[,,ik])))/sum(cv[,,ik])
-      }
-      colnames(pci) = paste0(colnames(Y)[i],"-",colnames(Y)[j])
-      PCI = cbind(PCI,pci)
-    }
+    x = matrix(2*(CV[i,j,]+CV[j,i,])/(CV[i,i,]+CV[i,j,]+CV[j,i,]+CV[j,j,]), ncol=1)
+    colnames(x) = paste0(colnames(Y)[i],"-",colnames(Y)[j])
+    PCI[i,j,] = x
   }
 }
 
@@ -274,13 +268,17 @@ grid(NA,NULL,lty=1)
 polygon(c(date,rev(date)),c(c(rep(0,nrow(total))),rev(total)),col="grey20", border="grey20")
 box()
 
-### PAIRWISE CONNECTEDNESS INDEX
-par(mfrow = c(ceiling(ncol(PCI)/2),2), oma = c(0,1,0,0) + 0.05, mar = c(1,1,1,1) + .05, mgp = c(0, 0.1, 0))
-for (i in 1:ncol(PCI)) {
-  plot(date,PCI[,i], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=colnames(PCI)[i],tck=0.02,yaxs="i",ylim=c(0, 1))
-  grid(NA,NULL,lty=1)
-  polygon(c(date,rev(date)),c(c(rep(0,nrow(PCI))),rev(PCI[,i])),col="grey20", border="grey20")
-  box()
+### DYNAMIC PAIRWISE CONNECTEDNESS INDEX
+par(mfrow = c(ceiling((k-1)*k/4),2), oma = c(0,1,0,0) + 0.05, mar = c(1,1,1,1) + .05, mgp = c(0, 0.1, 0))
+for (i in 1:k) {
+  for (j in 1:k) {
+    if (j<i) {
+      plot(date,PCI[i,j,], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=paste0(colnames(Y)[i],"-",colnames(Y)[j]),tck=0.02,yaxs="i",ylim=c(0, 1))
+      grid(NA,NULL,lty=1)
+      polygon(c(date,rev(date)),c(c(rep(0,dim(PCI)[3])),rev(PCI[i,j,])),col="grey20", border="grey20")
+      box()
+    }
+  }
 }
 
 ### END
