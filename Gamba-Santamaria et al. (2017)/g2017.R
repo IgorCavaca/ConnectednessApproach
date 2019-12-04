@@ -1,6 +1,7 @@
 
 ### GAMBA-SANTAMARIA, S., GOMEZ-GONZALEZ, J.E., HURTADO-GUARIN, J.L. AND MELO-VELANDIA, L.F. (2017)
 ### STOCK MARKET VOLATILITY SPILLOVERS: EVIDENCE FOR LATIN AMERICA
+### FINANCE RESEARCH LETTERS
 ### by David Gabauer (https://sites.google.com/view/davidgabauer/contact-details)
 
 tvp.Phi = function (x, nstep = 10, ...) {
