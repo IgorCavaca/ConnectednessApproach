@@ -1,7 +1,7 @@
 
 ### DIEBOLD, FX., AND YILMAZ, K. (2009)
 ### MEASURING FINANCIAL ASSET RETURN AND VOLATILITY SPILLOVERS, WITH APPLICATION TO GLOBAL EQUITY MARKETS
-### THE ECONOMIC JOURNAL
+### ECONOMIC JOURNAL
 ### by David Gabauer (https://sites.google.com/view/davidgabauer/contact-details)
 
 ofevd = function(ofevd, n.ahead=10) {
