@@ -58,7 +58,7 @@ k = ncol(Y)
 
 ### STATIC CONNECTEDNESS APPROACH
 library("vars")
-nlag = 4   # VAR(4)
+nlag = 4 # VAR(4)
 nfore = 10 # 10-step ahead forecast
 var_full = VAR(Y, p=nlag, type="const")
 CV_full = gfevd(var_full, n.ahead=nfore)$fevd
