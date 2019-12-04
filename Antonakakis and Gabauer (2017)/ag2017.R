@@ -252,14 +252,14 @@ for (i in 1:k) {
   }
 }
 
-### TOTAL VOLATILITY SPILLOVERS, FOUR ASSET CLASSES
+### DYNAMIC TOTAL CONNECTEDNESS
 par(mfrow = c(1,1), oma = c(0,1,0,0) + 0.05, mar = c(1,1,1,1) + .05, mgp = c(0, 0.1, 0))
 plot(date,total, type="l",xaxs="i",col="grey20", las=1, main="",ylab="",ylim=c(floor(min(total)),ceiling(max(total))),yaxs="i",xlab="",tck=0.01)
 grid(NA,NULL,lty=1)
 polygon(c(date,rev(date)),c(c(rep(0,nrow(total))),rev(total)),col="grey20", border="grey20")
 box()
 
-### DIRECTIONAL VOLATILITY SPILLOVERS, TO FOUR ASSET CLASSES
+### TOTAL DIRECTIONAL CONNECTEDNESS TO OTHERS
 par(mfrow = c(k/2,2), oma = c(0,1,0,0) + 0.02, mar = c(1,1,1,1) + .02, mgp = c(0, 0.1, 0))
 for (i in 1:k){
   plot(date,to[,i], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=paste(colnames(Y)[i],"TO all others"),ylim=c(floor(min(to)),ceiling(max(to))),tck=0.01,yaxs="i")
@@ -268,7 +268,7 @@ for (i in 1:k){
   box()
 }
 
-### DIRECTIONAL VOLATILITY SPILLOVERS, FROM FOUR ASSET CLASSES
+### TOTAL DIRECTIONAL CONNECTEDNESS FROM OTHERS
 par(mfrow = c(ceiling(k/2),2), oma = c(0,1,0,0) + 0.02, mar = c(1,1,1,1) + .02, mgp = c(0, 0.1, 0))
 for (i in 1:k){
   plot(date,from[,i], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=paste(colnames(Y)[i],"FROM all others"),ylim=c(floor(min(from)),ceiling(max(from))),tck=0.01,yaxs="i")
@@ -277,7 +277,7 @@ for (i in 1:k){
   box()
 }
 
-### NET VOLATILITY SPILLOVERS, FOUR ASSET CLASSES
+### NET TOTAL DIRECTIONAL CONNECTEDNESS
 par(mfrow = c(ceiling(k/2),2), oma = c(0,1,0,0) + 0.05, mar = c(1,1,1,1) + .05, mgp = c(0, 0.1, 0))
 for (i in 1:k){
   plot(date,net[,i], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=paste("NET",colnames(Y)[i]),ylim=c(floor(min(net)),ceiling(max(net))),tck=0.01,yaxs="i")
@@ -286,7 +286,7 @@ for (i in 1:k){
   box()
 }
 
-### NET PAIRWISE VOLATILITY SPILLOVERS
+### NET PAIRWISE DIRECTIONAL CONNECTEDNESS
 par(mfrow = c(ceiling(ncol(nps)/2),2), oma = c(0,1,0,0) + 0.05, mar = c(1,1,1,1) + .05, mgp = c(0, 0.1, 0))
 for (i in 1:ncol(nps)) {
   plot(date,nps[,i], xlab="",ylab="",type="l",xaxs="i",col="grey20", las=1, main=colnames(nps)[i],tck=0.02,yaxs="i",ylim=c(floor(min(nps)),ceiling(max(nps))))
