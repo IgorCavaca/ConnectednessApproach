@@ -1,7 +1,7 @@
 
 ### DIEBOLD, FX., AND YILMAZ, K. (2012)
 ### BETTER TO GIVE THAN TO RECEIVE: PREDICTIVE DIRECTIONAL MEASUREMENT OF VOLATILITY SPILLOVERS
-### JOURNAL OF INTERNATIONAL FORECASTING
+### INTERNATIONAL JOURNAL OF FORECASTING
 ### replicated by David Gabauer (https://sites.google.com/view/davidgabauer/contact-details)
 
 gfevd = function(model, n.ahead=10, normalize=TRUE, standardize=TRUE) {
